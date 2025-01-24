@@ -1,0 +1,143 @@
+.contactParent{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f7f7;
+}
+.contctHold{
+    width: 80%;
+    height: 500px;
+    display: flex;
+    border-radius: 10px;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.contactLeft{
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+    /* background-color: yellow; */
+}
+.contactRight{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: white;
+    padding: 20px;
+    background-image: url("https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dGVhbXxlbnwwfHwwfHx8MA%3D%3D");
+    background-size: cover;
+    /* background-color: greenyellow; */
+}
+.contactLeftTopic{
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bost{
+    width: 100%;
+    height: max-content;
+    font-size: 15px;
+}
+.contactBody{
+    width: 100%;
+    min-height: 350px;
+    padding-top: 20px;
+    /* background-color: red; */
+}
+.contactInputHold{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    /* background-color: yellow; */
+}
+.contactFirst{
+    width: 50%;
+    height: 100%;
+    /* background-color: yellow; */
+}
+.contactFirst input{
+    width: 95%;
+    height: 60%;
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding-left: 2%;
+    outline: none;
+}
+.contactEmailHold{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.contactEmailHold input{
+    width: 98%;
+    height: 60%;
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding-left: 2%;
+    outline: none;
+}
+.contactMessageHold{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+#contactMessage{
+    width: 98%;
+    height: 75%;
+    outline: none;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid silver;
+}
+.contactButt{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contactButt button{
+    width: 50%;
+    height: 70%;
+    background-color: darkcyan;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+@media screen and (width < 1000px) {
+    .contactRight{
+        display: none;
+    }
+    .contactParent{
+        background-color: white;
+        min-height: 400px;
+    }
+    .contctHold{
+        width: 100%;
+        min-height: 400px;
+        box-shadow: none;
+    }
+    .contactLeft{
+        width: 100%;
+        height: max-content;
+    }
+    .contactLeftTopic{
+        height: 100px;
+    }
+}

@@ -1,0 +1,107 @@
+.otpParent{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eae6ff;
+}
+.otpHold{
+    width: 30%;
+    height: 50%;
+    background-color: white;
+}
+.otplogo{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: orangered;
+    /* background-color: yellow; */
+}
+.read{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 600;
+    /* background-color: yellow; */
+}
+.read p{
+    font-size: 15px;
+    font-weight: 400;
+}
+.otpInputHold{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.otpInputHold input{
+    width: 50%;
+    height: 40px;
+    border: 1px solid black;
+    outline: none;
+    padding-left: 5px;
+}
+.resendhold{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.resendhold span{
+    color: orangered;
+    font-weight: 600;
+    cursor: pointer;
+    width: max-content;
+    border-bottom: 1px solid orangered;
+}
+.otpButtonHold{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: yellow; */
+}
+.otpCan{
+    width: 30%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.otpVer{
+    width: 30%;
+    height: 70%;
+    background-color: orangered;
+    border: none;
+    border-radius: 4px;
+    color: white;
+}
+
+@media screen and (width < 1000px) {
+    .otpParent{
+        background-color: white;
+        align-items: flex-start;
+        padding-top: 20px;
+        /* justify-content: flex-start; */
+    }
+    .otpHold{
+        width: 100%;
+    }
+}
+

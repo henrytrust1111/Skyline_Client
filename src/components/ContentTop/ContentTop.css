@@ -1,0 +1,112 @@
+/* main content top */
+.main-content-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: var(--clr-secondary);
+  width: 100%;
+  padding: 16px 0; /* Adding some padding to separate it from other content */
+}
+
+.sidebar-toggler {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.sidebar-toggler img {
+  width: 20px;
+}
+
+.content-top-title {
+  color: var(--clr-white);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.content-top-btn {
+  margin-left: 18px;
+}
+
+.content-top-btn img {
+  width: 24px;
+}
+
+.content-top-btn img:hover {
+  filter: brightness(0) invert(1);
+}
+
+.content-top-left {
+  display: flex;
+  align-items: center;
+}
+
+.tradingview-widget-copyright {
+  display: none !important;
+}
+
+.trade__widget {
+  margin-bottom: 32px;
+  z-index: 25; /* Ensure it's below the .main-content-top */
+  top: 60px; /* Adjust based on the height of .main-content-top */
+  position: sticky;
+  right: 0;
+}
+
+
+
+
+
+/* main content top
+.main-content-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  background-color: var(--clr-secondary);
+  width: 100%;
+  height: max-content;
+}
+.sidebar-toggler {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+.sidebar-toggler img {
+  width: 20px;
+}
+.content-top-title {
+  color: var(--clr-white);
+  font-size: 20px;
+  font-weight: 600;
+}
+.content-top-btn {
+  margin-left: 18px;
+}
+.content-top-btn img {
+  width: 24px;
+}
+.content-top-btn img:hover {
+  filter: brightness(0) invert(1);
+}
+.content-top-left {
+  display: flex;
+  align-items: center;
+}
+
+.tradingview-widget-copyright {
+  display: none !important;
+}
+
+.trade__widget {
+  margin-bottom: 32px;
+  position: sticky;
+  z-index: 30;
+  top: 0;
+} */

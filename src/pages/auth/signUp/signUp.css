@@ -1,0 +1,128 @@
+.signupParent{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #eae6ff;
+}
+.signUpbody{
+    width: 40%;
+    min-height: 90vh;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* padding-top: 1px; */
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.signUptop{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.signUptop p{
+    font-size: 15px;
+    font-weight: 600;
+}
+.signUptop span{
+    color: #f91e1a;
+}
+.signupInputHold{
+    width: 100%;
+    height: 90%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* background-color: yellowgreen; */
+}
+.signUpinput{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: yellow; */
+}
+.signupInputone{
+    width: 48%;
+    height: 100%;
+    /* background-color: yellowgreen; */
+}
+.signupInputone input, #marital{
+    width: 100%;
+    height: 60%;
+    border: 1px solid black;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.signUpbottonHold{
+    width: 100%;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: yellow; */
+}
+.signButton1{
+    width: 100%;
+    height: 40%;
+    background-color: #f91e1a;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+.signButton2{
+    width: 100%;
+    height: 40%;
+    font-weight: bold;
+    /* background-color: #f91e1a; */
+    border: 1px solid black;
+    color: orangered;
+    border-radius: 5px;
+}
+
+@media screen and (width < 1000px) {
+    .signupParent{
+        padding-top: 30px;
+        background-color: white;
+    }
+    .signUpbody{
+        height: max-content;
+        width: 100%;
+        box-shadow: none;
+    }
+    .signUptop{
+        height: 100px;
+    }
+    .signUptop p{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .signupInputHold{
+        height: max-content;
+    }
+    .signUpinput{
+        height: max-content;
+        flex-direction: column;
+    }
+    .signupInputone{
+        width: 100%;
+        height: 90px;
+    }
+    .signUpbottonHold{
+        height: 150px;
+    }
+}

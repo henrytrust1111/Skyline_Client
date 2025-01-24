@@ -1,0 +1,59 @@
+.cashmanageparent{
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+}
+.cashHeroPage{
+    width: 100%;
+    height: 100vh;
+    /* padding-bottom: 40px; */
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    /* justify-content: center; */
+    /* background-image: url("./imgs/bussiness.jpg"); */
+    background-size: cover;
+    background-color: white;
+}
+.cashHeroPage div{
+    width: 50%;
+    height: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    justify-content: center;
+    /* color: whitesmoke; */
+    font-size: 18px;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0)
+}
+.cashHeroPage div p{
+    font-size: 30px;
+    font-weight: 700;
+    color: blue;
+}
+.herobody{
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+}
+.heroBodytwo{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("./imgs/cashflow.jpg");
+    background-size: cover;
+    background-color: white;
+}
+
+@media screen and (width < 1000px) {
+    .cashHeroPage{
+        padding: 0px;
+    }
+    .cashHeroPage div {
+        width: 100%;
+        height: 70%;
+        color: white;
+    }
+}

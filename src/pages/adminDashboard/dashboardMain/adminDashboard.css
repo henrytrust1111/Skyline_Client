@@ -1,0 +1,259 @@
+.adminDashboardParent{
+    width: 100%;
+    min-height: 100vh;
+    /* overflow: scroll; */
+    background-color: white;
+}
+.adminHold{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.adminLeft{
+    width: 15%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 80px;
+    background-color: navy;
+}
+.logo{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: navy;
+}
+.navHold{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 5px;
+    /* background-color: pink; */
+}
+.navHolddivn{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    border-radius: 7px;
+    cursor: pointer;
+    /* color: white; */
+    background-color: white;
+}
+.navHolddiv{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    border-radius: 7px;
+    cursor: pointer;
+    color: white;
+    /* background-color: brown; */
+}
+.navHolddiv:hover{
+    background-color: white;
+    color: black;
+}
+.navlogo{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    /* background-color: blueviolet; */
+}
+.navWrited{
+    width: 80%;
+    height: 100%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 700;
+    /* background-color: brown; */
+}
+.adminRight{
+    width: 85%;
+    height: max-content;
+    margin-left: 15%;
+    /* background-color: aqua; */
+}
+.adminHead{
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid silver;
+    background-color: white;
+}
+.adminHeadHold{
+    width: 80%;
+    height: 70px;
+    display: flex;
+    /* background-color: ; */
+}
+.welcome{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: black;
+    /* justify-content: center; */
+}
+.welcome span{
+    color: navy;
+}
+.notify{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    /* background-color: hotpink; */
+}
+.notifyHold{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    /* background-color: hotpink; */
+}
+.notifyicon{
+    width: 50%;
+    height: 100%;
+    font-size: 40px;
+    /* color: white; */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.notifyicon2{
+    width: 50%;
+    height: 100%;
+    font-size: 40px;
+    /* color: white; */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    /* background-color: white; */
+}
+.profilepic{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: hotpink; */
+}
+.picpic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: hotpink;
+}
+.adminComponents{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* overflow: scroll; */
+    padding-top: 15px;
+    margin-top: 90px;
+    position: relative;
+    background-color: white;
+}
+.dropDownMenu{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    padding-top: 30px;
+    background-color: rgba(0, 0, 0, 0.644);
+}
+.dropdownHold{
+    width: 100%;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding-left: 20px;
+    font-size: 20px;
+    color: white;
+    /* background-color: red; */
+}
+.adminComponentHold{
+    width: 97%;
+    height: max-content;
+    background-color: white;
+    /* overflow: scroll; */
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+}
+
+@media screen and (width < 1000px) {
+    .adminLeft{
+        display: none;
+    }
+    .adminRight{
+        width: 100%;
+        height: max-content;
+        margin: 0px;
+        padding: 0;
+        /* background-color: red; */
+    }
+    .adminHeadHold{
+        width: 100%;
+        /* background-color: red; */
+    }
+    /* .adminHeadHold{} */
+    .welcome{
+        font-size: 20px;
+    }
+    .notifyHold{
+        width: 100%;
+        flex-direction: row-reverse;
+        /* justify-content: flex-end; */
+        /* background-color: yellow; */
+    }
+    .profilepic{
+        display: none;
+    }
+    .notifyicon{
+        display: none;
+    }
+    .notifyicon2{
+        display: flex;
+        /* align-items: center; */
+        /* background-color: green; */
+    }
+    .adminComponents{
+        width: 100%;
+        height: max-content;
+        margin-top: 55px;
+    }
+    .adminComponentHold{
+        width: 97%;
+        min-height: 650px;
+        box-shadow: none;
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv7sYSJWNDcQ0V5gxwVDWwLQLTiZ04Lqs0iw&s");
+        background-size: cover;
+        padding-bottom: 100px;
+        /* background-color: navy; */
+    }
+}

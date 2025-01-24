@@ -1,0 +1,483 @@
+.addAccountParent{
+    width: 100%;
+    height: 100%;
+    /* padding-bottom: 30px; */
+    background-color: white;
+}
+.addformHold{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+}
+.addformrow{
+    width: 100%;
+    height: 70px;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    /* background-color: yellow; */
+}
+.inputHold{
+    width: 25%;
+    height: 100%;
+    /* color: bl; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: yellow; */
+}
+.inputHold input{
+    width: 90%;
+    height: 60%;
+    padding-left: 2%;
+    border-radius: 7px;
+    color: black;
+    border: 1px solid silver;
+}
+.addformrowbutt{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.addformrowbutt button{
+    width: 20%;
+    height: 70%;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    background-color: blue;
+}
+.addformrowbutt button:hover{
+    background-color: rgb(43, 43, 245);
+}
+.addformrowbutt button:active{
+    background-color: blue;
+}
+
+@media screen and (width < 1000px) {
+    .addformHold{
+        height: max-content;
+        gap: 25px;
+        background-image: url("data:image/jpeg;base64,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");
+        background-size: cover;
+        padding-bottom: 100px;
+        }
+    .addformrow{
+        flex-direction: column;
+        height: max-content;
+    }
+    .inputHold{
+        width: 100%;
+        height: 100px;
+        justify-content: center;
+        gap: 5px;
+    }
+    .inputHold input{
+        width: 100%;
+        /* height: 80px; */
+    }
+    .addformrowbutt button{
+        width: 100%;
+        height: 90%;
+    }
+}
+
+
+.creditAccountHold{
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    /* background-color: pink; */
+}
+.creditAccount{
+    width: 40%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+}
+.creditTopic{
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.creditAccountrow{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* background-color: yellow; */
+}
+.creditInputHold{
+    width: 48%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#accounts{
+    width: 100%;
+    height: 40px;
+    border: 1px solid silver;
+    outline: none;
+}
+.creditInputHold p{
+    font-weight: 600;
+}
+.creditInputHold input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid silver;
+    outline: none;
+    padding-left: 2%;
+}
+.creditAcctButt{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellowgreen; */
+}
+.creditAcctButt button{
+    width: 50%;
+    height: 70%;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+.creditAcctButt button:hover{
+    background-color: rgb(69, 69, 252);
+}
+
+@media screen and (width < 1000px) {
+    .creditTopic{
+        height: 30px;
+        /* background-color: red; */
+    }
+    .creditAccount{
+        width: 100%;
+        height: max-content;
+        box-shadow: none;
+        padding-bottom: 100px;
+        /* gap: 30px; */
+    }
+    .creditAccountrow{
+        height: max-content;
+        flex-direction: column;
+        gap: 20px;
+        /* background-color: red; */
+    }
+    .creditInputHold{
+        width: 100%;
+        height: 80px;
+    }
+    .creditInputHold input{
+        height: 50px;
+        border: 1px solid black;
+        border-radius: 7px;
+    }
+    .creditInputHold p{
+        font-size: 20px;
+        /* color: skyblue; */
+    }
+    #accounts{
+        height: 50px;
+        /* background-color: red; */
+        border: 1px solid black;
+        border-radius: 7px;
+    }
+    .creditAcctButt button{
+        width: 95%;
+    }
+}
+
+.updateAccountHold{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+.updateHeadtopic{
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+.accountChooseHold{
+    width: 100%;
+    height: 600px;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-y: scroll;
+    position: relative;
+    background-color: white;
+}
+.accountChooseDetail{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    /* background-color: brown; */
+}
+.accountChooseDetail:hover{
+    background-color: navy;
+    cursor: pointer;
+    color: white;
+}
+.updateInfoDetails{
+    width: 100%;
+    height: 700px;
+    position: absolute;
+    top: 0;
+    background-color: white;
+}
+.closeUpdate{
+    width: 100%;
+    height: 50px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* background-color: forestgreen; */
+}
+.updateClose{
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+.updateClose2{
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+.updateClose:hover{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.deleteAcountParent{
+    width: 100%;
+    height: 600px;
+    position: relative;
+    background-color: white;
+}
+.deleteActTopic{
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+.deleteSelectHold{
+    width: 100%;
+    height: 550px;
+    padding: 10px;
+    overflow-y: scroll;
+    /* background-color: blue; */
+}
+.deleteSelect{
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* justify-self: center; */
+    border-radius: 7px;
+    /* background-color: navy; */
+}
+.deleteSelect:hover{
+    background-color: navy;
+    color: white;
+    cursor: pointer;
+}
+.deleteWarn{
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    position: absolute;
+    top: 0;
+    /* left: 20%; */
+    background-color: white;
+}
+.deleteWarn i{
+    font-weight: 400;
+    font-size: 15px;
+    color: red;
+}
+.deleteButt{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 50px;
+    /* background-color: khaki; */
+}
+.cancelDel, .del{
+    width: 20%;
+    height: 50px;
+    border: none;
+    border-radius: 7px;
+    /* background-color: blue; */
+    /* color: white; */
+}
+.del:hover{
+    background-color: red; 
+    color: white;
+}
+.cancelDel:hover{
+    background-color: blue; 
+    color: white;
+}
+
+
+@media screen and (width < 1000px) {
+    .deleteButt{
+        justify-content: space-between;
+    }
+    .deleteButt button{
+        width: 30%;
+    }
+    .closeUpdate{
+        justify-content: flex-start;
+        gap: 50px;
+    }
+    .updateClose{
+        display: none;
+    }
+    .updateClose2{
+        display: flex;
+    }
+}
+
+
+.changeStatusTopic{
+    width: 100%;
+    height: 50px;
+    display: flex;align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 600;
+    /* background-color: yellow; */
+}
+.changeStatusHold{
+    width: 100%;
+    height: 550px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* background-color: green; */
+}
+.statuschangeWrap{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* background-color: yellow; */
+}
+#status{
+    width: 30%;
+    height: 40px;outline: none;
+    border: 1px solid silver;
+    cursor: pointer;
+}
+.statusChangeButt{
+    width: 100%;
+    height: 50px;
+    /* padding-left: 20px; */
+    display: flex;
+    align-items: center;
+    /* background-color: yellow; */
+}
+.statusChangeButt button{
+    width: 10%;
+    height: 80%;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    background-color: blue;
+}
+.statusChangeButt button:hover{
+    background-color: rgb(58, 58, 252);
+}
+.guideline{
+    width: 100%;
+    padding-top: 20px;
+    font-weight: 700;
+    /* font-size: 20px; */
+    padding-bottom: 20px;
+    height: max-content;
+    /* background-color: red; */
+}
+.guideline span{
+    font-weight: 400;
+    /* font-size: 15px; */
+}
+
+@media screen and (width < 1000px) {
+    .changeStatusHold{
+        height: max-content;
+        gap: 20px;
+        background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwoNDQ0NDQ0NCAgIDQ0HBwcHCA8ICQcNFREWFhUREx8YHSggGBoxGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDi0ZFRkrNy0rKzc3NysrKysrKy0rKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAL0BCwMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAACAQADBv/EABgQAQEBAQEAAAAAAAAAAAAAAAABEQIS/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAED/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwD3/MdOYnMPmNWayHIkjpIg0hyNIUgNIWLIsiK0hSLIsgJIuFIuCjIWLI2AmNhMA42HjYAYxNgBiWHiYAYNjpYlgOdg2OliWCOVgWOtg0HGwbHWwbFRxsCx2sc7FHHqDjrYOCHzDkHmOvMFWQ5E5hxBuYcjSFIitIcjSLIDSHI0iitIrFIgmLiyNgJiqwJjYuNgDjYTAGIeIAYlh2IDnYNjolijnYFjpRsEc7ArrYHUByoWOtgWKjj1AdaGKHzHSQeTiB8wpEhyCrDkSQogshyJCgrYUiQkGkXGXAZcaRQbGxWBGVgTEsJgBsLEAcGw0oANOwaoNgV0sCg52DXTqBYI52OddbAsVHLqBjpYCh8unIR0iBQ4PJxFKQpEhyAshRIUgqxWioLFjYoMysDMrAjKwIyoCMqANiEgAlKpQChXQao50K6UaI59OfTrXOqOVQ6AhR0gcnAOHBh8opQ4MKCwoUGFEFhSJFgKrRYDKzSAy4rAmNisCYhJYAsqAiYtQBo0qlALEpUaoHQ2F0NECufTpQ6Bz6A+hVF5dI58ukB0hQYURThwIcFU4MKIKUSKCxWYFWNFBmZgZmYGZmAWWpQFlSgNglRAalKjVA6CnQoUKPR9B0I59AXQqi8ukc+XSA6QoEOIpw4EOClCgHEFhCsAlSKClBWArMwMzMDMzALNWBErVASiVo0Eo1aNUGhT6ChR6DoqFEDoD6BUaOkc46QHSFA5OIpw45x0gQoQwoilFgxYBxYKwCZFBZVFdBWTW0G1GYGqMwJUUdBKlUaCUatGgPQ0qFVBodFQoB0K9CqND5c4coOvJxzhxFdIXLnDgOkWDFgrooQogUqisAlFQJkYFZGBUZAZkbQYVtQE0bVo0ESrQtUShaVCiD0FLoOlA6FaOiNzTjlzXSUHWHHKUpRXWHHOFKg6QoEKUU4UoRZUD1dCUgJRbQNh1tAmTU0CTU1NBdRkBkta1Aa0ayWqJaNa0bQqUatodUROq52lQqoNoL1RUSV0lcea6c0HXmnK5Snyg68045Q5UV0lKOcpSg6SlrmUoproRUDlWUF0CUNXQJh1tBWTU0F1NTU0FRhtBbRta0aqNQtW0LQa0OqtoWqiWhatoWgNoavVFROafNcpTgOsrpK4yukoOspSucKIOspSuUOVFdJVlc4UoOkq6Ci6erKEqwC1dFgLWtFgXW1GBdS0U0F9JqalojWja1G0F0a1CqJ1QtWj0Ilrn1SrnVEtDV6DRH//2Q==");
+    }
+    #status{
+        width: 100%;
+        height: 50px;
+    }
+    .statusChangeButt button{
+        width: 50%;
+    }
+    /* .guideline{} */
+}
+
+
+.sendOtpParent{
+    width: 100%;
+    min-height: 100vh;
+    background-color: yellow;
+}

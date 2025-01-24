@@ -1,0 +1,133 @@
+.accountMangeParent{
+    width: 100%;
+    min-height: 600px;
+    position: relative;
+    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr2aXhyTLwpF_yHokiPXY_-9JZbKG1oqM4qg&s"); */
+    background-color: white;
+    /* background-size: cover; */
+}
+.accountAction{
+    width: 100%;
+    height: 600px;
+    position: absolute;
+    /* padding-bottom: 30px; */
+    background-color: khaki;
+}
+.remove{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: white;
+}
+.divv1{
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.divv{
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    display: none;
+}
+.divv1:hover{
+    background-color: red;
+    color: white;
+}
+.infow{
+    display: none;
+}
+.accountmanageHead{
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.manageFunctionHol{
+    width: 100%;
+    height: max-content;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.manageFunction{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    border-radius: 10px;
+    /* background-color: yellow; */
+}
+.manageFunction:hover{
+    background-color: navy;
+    color: white;
+    cursor: pointer;
+}
+.manageFunctionIcon{
+    width: 5%;
+    height: 100%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.manageFunctionName{
+    width: 90%;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* background-color: yellowgreen; */
+}
+
+@media screen and (width < 1000px) {
+    .accountMangeParent{
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr2aXhyTLwpF_yHokiPXY_-9JZbKG1oqM4qg&s");
+        /* background-color: white; */
+        background-size: cover;
+    }
+    .manageFunctionIcon{
+        width: 20%;
+    }
+    .accountAction{
+        padding-bottom: 50px;
+    }
+    .remove{
+        /* background-color: red; */
+        gap: 50px;
+        justify-content: flex-start;
+    }
+    .manageFunctionHol{
+        /* background-color: red; */
+        padding: 0;
+    }
+    .divv1{
+        display: none;
+    }
+    .divv{
+        display: flex;
+    }
+    .infow{
+        display: flex;
+        font-weight: 600;
+        font-size: 15px;
+    }
+}
