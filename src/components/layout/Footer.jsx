@@ -29,8 +29,8 @@ const Footer = () => {
                         </div>
                         <div className="w-full lg:w-1/5 px-3">
                             <p className="mb-2 lg:mb-4 lg:text-lg font-bold font-heading text-blueGray-800">Contacts</p>
-                            <p className="lg:text-lg text-blueGray-400">(+136) 046 13403</p>
-                            <p className="lg:text-lg text-blueGray-400">(+121) 8360 4816</p>
+                            <p className="lg:text-lg text-blueGray-400">(+132) 046 13403</p>
+                            <p className="lg:text-lg text-blueGray-400">(+131) 8360 4816</p>
                             <p className="lg:text-lg text-blueGray-400">customercare@Skyline-finance.com</p>
                         </div>
                     </div>
