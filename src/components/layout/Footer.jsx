@@ -25,6 +25,7 @@ const Footer = () => {
                         <div className="w-full lg:w-1/5 px-3 mb-8 lg:mb-0">
                             <p className="mb-2 lg:mb-4 lg:text-lg font-bold font-heading text-blueGray-800">Office</p>
                             <p className="lg:text-lg text-blueGray-400">82859 Shaniya Park, Apt. 235, 73174</p>
+                            <p className="lg:text-lg text-blueGray-400">32577 Ruecker Forest, Suite 074,</p>
                         </div>
                         <div className="w-full lg:w-1/5 px-3">
                             <p className="mb-2 lg:mb-4 lg:text-lg font-bold font-heading text-blueGray-800">Contacts</p>
