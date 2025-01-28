@@ -27,7 +27,7 @@ const Header = ({handleHidden}) => {
                                 />
                             </a>
                             {/* <span className="hidden lg:flex">SKYLINE</span> */}
-                            <span className="flex lg:hidden">SKYLINE</span>
+                            {/* <span className="flex lg:hidden">SKYLINE</span> */}
                         </Link>
                         <ul className="hidden lg:flex lg:items-center lg:w-auto lg:space-x-12">
                             <li className="group relative pt-4 pb-4 has-child">
