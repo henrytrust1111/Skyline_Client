@@ -46,7 +46,7 @@ const Footer = () => {
               </p>
               <p className="lg:text-lg text-blueGray-400">(+44) 7459 3404 50</p>
               <p className="lg:text-lg text-blueGray-400">
-                customercare@Skyline-finance.com
+                support@skyline-savings.com
               </p>
             </div>
           </div>
