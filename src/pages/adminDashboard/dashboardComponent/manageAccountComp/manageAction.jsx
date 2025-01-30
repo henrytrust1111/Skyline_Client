@@ -420,6 +420,13 @@ export const CreditAccount = () => {
       .then((response) => {
         toast.success(response.data.message);
         setLoading(false);
+        setAccountToCredit("")
+        setAmount("")
+        setDate("")
+        setDebitAccount("")
+        setBank("")
+        setDescription("")
+        setTime("")
       })
       .catch((error) => {
         console.log(error);
