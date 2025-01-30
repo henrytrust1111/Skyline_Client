@@ -369,6 +369,7 @@ export const CreditAccount = () => {
   };
   const admin = JSON.parse(localStorage.getItem("adminData"));
   const token = admin.token;
+  const adminId = admin._id;
   const headers = {
     Authorization: `Bearer ${token}`
   };
@@ -389,30 +390,34 @@ export const CreditAccount = () => {
   }, []);
 
   // const handleSelectChange = (e) => {
-  //     const selectedUser = allAccount.find(user => user._id === e.target.value);
-  //     if (selectedUser) {
-  //       setId(selectedUser._id);
-  //       setAccountToCredit(selectedUser.accountNumber)
-  //     }
-  //   };
+  //   console.log(e.target.value);
+    
+  //   const selectedUser = allAccount.find(user => user.accountNumber === e.target.value);
+  //   if (selectedUser) {
+  //     setId(selectedUser._id);
+  //     setAccountToCredit(selectedUser.accountNumber);
+  //   } else {
+  //     setId(undefined);
+  //     setAccountToCredit(undefined);
+  //   }
+  //   console.log(selectedUser);
+    
+  // };
+
+
 
   const handleSubmit = (e) => {
     setLoading(true);
     e.preventDefault();
-    const url = `https://skyline-2kje.onrender.com/credit/${id}`;
+    if (!adminId) {
+      toast.error("Please select a valid account to credit.");
+      setLoading(false);
+      return;
+    }
+    const url = `https://skyline-2kje.onrender.com/credit/${adminId}`;
     axios
       .post(url, data, { headers })
-      // .post(url, {
-      //   chooseAccount: '3175524678',
-      //   from: '8154012262',
-      //   amount: 100,
-      //   bank: 'Some Bank',
-      //   description: 'Payment for services',
-      //   date: '2023-10-10',
-      //   time: '10:00 AM',
-      // }, { headers })
       .then((response) => {
-        // console.log(response)
         toast.success(response.data.message);
         setLoading(false);
       })
@@ -420,13 +425,8 @@ export const CreditAccount = () => {
         console.log(error);
         setLoading(false);
         toast.error(error.response.data.message);
-        // console.log("id", id)
-        // console.log("number", accountToCredit)
-        // console.log("number", allAccount)
       });
-  };
-  // console.log("sender",creditAccount)
-  // console.log("id",accountToCredit)
+    }
   return (
     <div className="addAccountParent">
       <ToastContainer />
