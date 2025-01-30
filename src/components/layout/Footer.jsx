@@ -39,16 +39,12 @@ const Footer = () => {
               <p className="lg:text-lg text-blueGray-400">
                 14 high street, opposite Bank Bridge, barking London
               </p>
-              <p className="lg:text-lg text-blueGray-400">
-                32577 Ruecker Forest, Suite 074,
-              </p>
             </div>
             <div className="w-full lg:w-1/5 px-3">
               <p className="mb-2 lg:mb-4 lg:text-lg font-bold font-heading text-blueGray-800">
                 Contacts
               </p>
               <p className="lg:text-lg text-blueGray-400">(+44) 7459 3404 50</p>
-              <p className="lg:text-lg text-blueGray-400">(+131) 8360 4816</p>
               <p className="lg:text-lg text-blueGray-400">
                 customercare@Skyline-finance.com
               </p>
