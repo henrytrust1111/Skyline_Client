@@ -24,13 +24,13 @@ const AdminLogin = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    if (username !== "avantgardeAdmin") {
-        setIsLoading(false)
-        toast.error("incorrect username")
-    } else if(password !== "12345Avantgarde") {
-        setIsLoading(false)
-        toast.error("incorrect password")
-    } else {
+    // if (username !== "veevs") {
+    //     setIsLoading(false)
+    //     toast.error("incorrect username")
+    // } else if(password !== "") {
+    //     setIsLoading(false)
+    //     toast.error("incorrect password")
+    // } else {
     try {
       const response = await axios.post("https://skyline-2kje.onrender.com/admin-login", {
         username: username,
@@ -46,16 +46,17 @@ const AdminLogin = () => {
         setIsLoading(false)
         toast.error(error.message);
     } 
-  }
+  // }
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen -bg--clr-secondary px-4" 
-    style={{backgroundImage: 'url("./imgs/logos/favicon.svg")'}}>
-      <div className="w-full max-w-md md:max-w-lg lg:w-[40%] lg:-bg--clr-primary p-8 rounded-lg lg:shadow-lg sm:w-[60%] sm:shadow-none -text--clr-silver-v1">
+    // style={{backgroundImage: 'url("./imgs/logos/favicon.svg")'}}
+    >
+      <div className="w-full max-w-md md:max-w-lg lg:w-[40%] bg--clr-primary p-8 rounded-lg lg:shadow-lg sm:w-[60%] sm:shadow-none -text--clr-silver-v1">
         <ToastContainer />
         <h1 className="text-2xl lg:text-3xl font-bold text-center mb-3 uppercase -text--clr-pumpkin">
-          SKYLINE  FINANCE ADMIN
+          SKYLINE FINANCE ADMIN
         </h1>
         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
         <form onSubmit={handleLogin} className="space-y-6">
