@@ -5,6 +5,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import { BeatLoader } from "react-spinners";
 import axios from "axios";
+import { FaCamera } from "react-icons/fa";
 
 export const AddAccount = () => {
   const [fullName, setFullName] = useState("");
@@ -389,22 +390,6 @@ export const CreditAccount = () => {
     fetchData();
   }, []);
 
-  // const handleSelectChange = (e) => {
-  //   console.log(e.target.value);
-    
-  //   const selectedUser = allAccount.find(user => user.accountNumber === e.target.value);
-  //   if (selectedUser) {
-  //     setId(selectedUser._id);
-  //     setAccountToCredit(selectedUser.accountNumber);
-  //   } else {
-  //     setId(undefined);
-  //     setAccountToCredit(undefined);
-  //   }
-  //   console.log(selectedUser);
-    
-  // };
-
-
 
   const handleSubmit = (e) => {
     setLoading(true);
@@ -745,6 +730,7 @@ export const UpdateAccount = () => {
   const [accountLimit, setAccountLimit] = useState();
   const [loading2, setLoading2] = useState(false);
   const [placeholder, setPlaceholder] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
   const [error, setError] = useState({
     // isError: false,
     type: "",
@@ -783,6 +769,54 @@ export const UpdateAccount = () => {
   const token = admin.token;
   const headers = {
     Authorization: `Bearer ${token}`
+  };
+
+  const handleImageUpload = async (
+    event
+  ) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please upload an image file");
+      return;
+    }
+
+    // Validate file size (e.g., max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Image size should be less than 5MB");
+      return;
+    }
+
+    setImageLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("imageUrl", file);
+
+      const response = await axios.put(
+        `${endpoint2}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        }
+      );
+
+      setImage(URL.createObjectURL(file));
+      toast.success(
+        response?.data?.message || "Profile photo updated successfully"
+      );
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message || "failed to upload image");
+      } else {
+        toast.error("An unexpected error occurred");
+      }
+    } finally {
+      setImageLoading(false);
+    }
   };
 
   const handleUpdate = () => {
@@ -866,6 +900,53 @@ export const UpdateAccount = () => {
             </div>
 
             <div className="addformHold">
+                    {/* Profile Information */}
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Profile Information</h3>
+        <div className="relative flex items-center gap-4">
+          <div className="relative w-20 h-20 rounded-[100%] bg-gray-300 ">
+            <img
+              src={
+                // image ||
+                // profile?.imageUrl ||
+                "https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg"
+              }
+              alt="Profile"
+              // layout="responsive"  
+              width={100}
+              height={100}
+              className="w-full h-full rounded-[100%] object-cover border"
+            />
+            <label
+              htmlFor="upload-image"
+              className="absolute bottom-0 right-0 p-1 bg-[#000080] rounded-full text-white cursor-pointer disabled:opacity-50"
+            >
+              {imageLoading ? (
+                <div className="animate-spin">↻</div>
+              ) : (
+                <FaCamera />
+              )}
+            </label>
+            <input
+              type="file"
+              id="upload-image"
+              className="hidden"
+              accept="image/*"
+              onChange={handleImageUpload}
+              disabled={imageLoading}
+            />
+          </div>
+
+          <label
+            htmlFor="upload-image"
+            className={`px-3 py-2 text-sm font-semibold bg-white text-[#000080] border border-[#000080] rounded-[7px] cursor-pointer ${
+              imageLoading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            {imageLoading ? "Uploading..." : "Upload New"}
+          </label>
+        </div>
+      </div>
               <div className="addformrow">
                 <div className="inputHold">
                   <p>Full Name</p>
