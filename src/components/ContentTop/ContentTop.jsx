@@ -41,10 +41,10 @@ const ContentTop = () => {
     setShowSettings(false);
   }
 
-  function handleUploadImage() {
-    setUploadImageModalOpen(true);
-    setShowSettings(false);
-  }
+  // function handleUploadImage() {
+  //   setUploadImageModalOpen(true);
+  //   setShowSettings(false);
+  // }
 
   function handleEditProfile() {
     setEditProfileModalOpen(true);
@@ -111,13 +111,13 @@ const ContentTop = () => {
                   <FaUserEdit className="mr-2" />
                   <span>Edit Profile</span>
                 </div>
-                <div
+                {/* <div
                   className="flex items-center p-2 hover:bg-gray-100 cursor-pointer -text--clr-silver-v1"
                   onClick={() => handleUploadImage()}
                 >
                   <FaUpload className="mr-2" />
                   <span>Upload Image</span>
-                </div>
+                </div> */}
                 <div
                   className="flex items-center p-2 hover:bg-gray-100 cursor-pointer -text--clr-silver-v1"
                   onClick={() => handleCardDetails()}
