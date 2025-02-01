@@ -26,6 +26,7 @@ export const AddAccount = () => {
   const [accountLimit, setAccountLimit] = useState();
   const [cotCode, setCotCode] = useState("");
   const [taxCode, setTaxCode] = useState("");
+  const [matchingCode, setMatchingCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({
     // isError: false,
@@ -55,7 +56,8 @@ export const AddAccount = () => {
     retype_password: retypePassword,
     accountLimit: limit,
     cotCode: cotCode,
-    taxCode: taxCode
+    taxCode: taxCode,
+    matchingCode
   };
 
   const passwordValidator = () => {
@@ -321,15 +323,15 @@ export const AddAccount = () => {
                 type="text"
               />
             </div>
-            {/* <div className="inputHold">
-                        <p>Available balance</p>
-                        <input
-                         required
-                         value={availableBalance}
-                         onChange={(e)=> setAvailableBalance(e.target.value)}
-                         type="number"
-                         />
-                    </div> */}
+            <div className="inputHold">
+              <p>Matching Code</p>
+              <input
+                required
+                value={matchingCode}
+                onChange={(e) => setMatchingCode(e.target.value)}
+                type="number"
+              />
+            </div>
           </div>
           <div className="addformrowbutt">
             <button>
@@ -390,7 +392,6 @@ export const CreditAccount = () => {
     fetchData();
   }, []);
 
-
   const handleSubmit = (e) => {
     setLoading(true);
     e.preventDefault();
@@ -405,20 +406,20 @@ export const CreditAccount = () => {
       .then((response) => {
         toast.success(response.data.message);
         setLoading(false);
-        setAccountToCredit("")
-        setAmount("")
-        setDate("")
-        setDebitAccount("")
-        setBank("")
-        setDescription("")
-        setTime("")
+        setAccountToCredit("");
+        setAmount("");
+        setDate("");
+        setDebitAccount("");
+        setBank("");
+        setDescription("");
+        setTime("");
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
         toast.error(error.response.data.message);
       });
-    }
+  };
   return (
     <div className="addAccountParent">
       <ToastContainer />
@@ -580,6 +581,13 @@ export const DebitAccount = () => {
       .post(url, data, { headers })
       .then((response) => {
         // console.log(response)
+        setDebitAccount("");
+        setCreditAccount("");
+        setAmount("");
+        setDescription("");
+        setDate("");
+        setTime("");
+        setBank("");
         toast.success(response.data.message);
         setLoading(false);
       })
@@ -731,6 +739,7 @@ export const UpdateAccount = () => {
   const [loading2, setLoading2] = useState(false);
   const [placeholder, setPlaceholder] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
+  const [image, setImage] = useState(null);
   const [error, setError] = useState({
     // isError: false,
     type: "",
@@ -771,9 +780,7 @@ export const UpdateAccount = () => {
     Authorization: `Bearer ${token}`
   };
 
-  const handleImageUpload = async (
-    event
-  ) => {
+  const handleImageUpload = async (event) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
@@ -792,16 +799,12 @@ export const UpdateAccount = () => {
     setImageLoading(true);
     try {
       const formData = new FormData();
-      formData.append("imageUrl", file);
+      formData.append("profilePhoto", file);
 
       const response = await axios.put(
-        `${endpoint2}`,
+        `https://skyline-2kje.onrender.com/profilephoto/${placeholder._id}`,
         formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        }
+        { headers }
       );
 
       setImage(URL.createObjectURL(file));
@@ -900,53 +903,55 @@ export const UpdateAccount = () => {
             </div>
 
             <div className="addformHold">
-                    {/* Profile Information */}
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Profile Information</h3>
-        <div className="relative flex items-center gap-4">
-          <div className="relative w-20 h-20 rounded-[100%] bg-gray-300 ">
-            <img
-              src={
-                // image ||
-                // profile?.imageUrl ||
-                "https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg"
-              }
-              alt="Profile"
-              // layout="responsive"  
-              width={100}
-              height={100}
-              className="w-full h-full rounded-[100%] object-cover border"
-            />
-            <label
-              htmlFor="upload-image"
-              className="absolute bottom-0 right-0 p-1 bg-[#000080] rounded-full text-white cursor-pointer disabled:opacity-50"
-            >
-              {imageLoading ? (
-                <div className="animate-spin">↻</div>
-              ) : (
-                <FaCamera />
-              )}
-            </label>
-            <input
-              type="file"
-              id="upload-image"
-              className="hidden"
-              accept="image/*"
-              onChange={handleImageUpload}
-              disabled={imageLoading}
-            />
-          </div>
+              {/* Profile Information */}
+              <div>
+                <h3 className="text-lg font-semibold mb-4">
+                  Profile Information
+                </h3>
+                <div className="relative flex items-center gap-4">
+                  <div className="relative w-20 h-20 rounded-[100%] bg-gray-300 ">
+                    <img
+                      src={
+                        image ||
+                        placeholder?.profilePhoto?.url ||
+                        "https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg"
+                      }
+                      alt="Profile"
+                      // layout="responsive"
+                      width={100}
+                      height={100}
+                      className="w-full h-full rounded-[100%] object-cover border"
+                    />
+                    <label
+                      htmlFor="upload-image"
+                      className="absolute bottom-0 right-0 p-1 bg-[#000080] rounded-full text-white cursor-pointer disabled:opacity-50"
+                    >
+                      {imageLoading ? (
+                        <div className="animate-spin">↻</div>
+                      ) : (
+                        <FaCamera />
+                      )}
+                    </label>
+                    <input
+                      type="file"
+                      id="upload-image"
+                      className="hidden"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      disabled={imageLoading}
+                    />
+                  </div>
 
-          <label
-            htmlFor="upload-image"
-            className={`px-3 py-2 text-sm font-semibold bg-white text-[#000080] border border-[#000080] rounded-[7px] cursor-pointer ${
-              imageLoading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
-            {imageLoading ? "Uploading..." : "Upload New"}
-          </label>
-        </div>
-      </div>
+                  <label
+                    htmlFor="upload-image"
+                    className={`px-3 py-2 text-sm font-semibold bg-white text-[#000080] border border-[#000080] rounded-[7px] cursor-pointer ${
+                      imageLoading ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                  >
+                    {imageLoading ? "Uploading..." : "Upload New"}
+                  </label>
+                </div>
+              </div>
               <div className="addformrow">
                 <div className="inputHold">
                   <p>Full Name</p>
