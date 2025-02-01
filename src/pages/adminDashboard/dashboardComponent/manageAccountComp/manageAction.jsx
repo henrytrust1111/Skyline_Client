@@ -740,6 +740,7 @@ export const UpdateAccount = () => {
   const [placeholder, setPlaceholder] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
   const [image, setImage] = useState(null);
+  const [matchingCode, setMatchingCode] = useState("");
   const [error, setError] = useState({
     // isError: false,
     type: "",
@@ -772,7 +773,8 @@ export const UpdateAccount = () => {
     registrationDate: registerationDate,
     cotCode: cotCode,
     taxCode: taxCode,
-    accountLimit: limit
+    accountLimit: limit,
+    matchingCode
   };
   const admin = JSON.parse(localStorage.getItem("adminData"));
   const token = admin.token;
@@ -1129,6 +1131,15 @@ export const UpdateAccount = () => {
                     placeholder={placeholder.accountLimit}
                     value={accountLimit}
                     onChange={(e) => setAccountLimit(e.target.value)}
+                    type="number"
+                  />
+                </div>
+                <div className="inputHold">
+                  <p>Matching Code</p>
+                  <input
+                    placeholder={placeholder.matchingCode}
+                    value={matchingCode}
+                    onChange={(e) => setMatchingCode(e.target.value)}
                     type="number"
                   />
                 </div>
