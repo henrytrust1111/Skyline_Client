@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const TransferForm = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,39 @@ const TransferForm = () => {
 
   const [loading, setLoading] = useState(false);
   const [modalStep, setModalStep] = useState(0);
+  const [countdown, setCountdown] = useState(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleViewDetails = () => {
+    navigate("/dashboard/account-statement");
+  };
+
+  const handleStepChange = (step) => {
+    if (modalStep === 1 && !formData.cotCode) {
+      toast.error("Please enter your COT Code");
+      return;
+    }
+
+    if (modalStep === 2 && !formData.taxCode) {
+      toast.error("Please enter your Tax Code");
+      return;
+    }
+    setCountdown(3); // Set countdown to 3 seconds
+    let timer = 3;
+
+    const interval = setInterval(() => {
+      timer -= 1;
+      setCountdown(timer);
+
+      if (timer === 0) {
+        clearInterval(interval);
+        setModalStep(step);
+        setCountdown(null); // Reset countdown
+      }
+    }, 1000);
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -25,8 +59,15 @@ const TransferForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (modalStep === 0) {
-      setModalStep(1);
+    // Validation for required fields at each step
+    if (
+      modalStep === 0 &&
+      (!formData.amount ||
+        !formData.beneficiaryName ||
+        !formData.beneficiaryNumber ||
+        !formData.bankName)
+    ) {
+      toast.error("Please fill in all fields.");
       return;
     }
 
@@ -73,27 +114,93 @@ const TransferForm = () => {
           }
         }
       );
-      toast.success("Transfer successful!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined
-      });
+      // toast.success("Transfer successful!", { autoClose: 5000 });
+      setShowSuccessModal(true);
+      setTimeout(() => {
+        setShowSuccessModal(false);
+      }, 3000);
       window.location.reload();
-      const outcome = response.data;
-      console.log(outcome);
     } catch (error) {
       toast.error(
         error.response?.data?.message || "An error occurred. Please try again."
       );
-      console.log(error);
     } finally {
       setLoading(false);
     }
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   if (modalStep === 0) {
+  //     setModalStep(1);
+  //     return;
+  //   }
+
+  //   if (modalStep === 1 && !formData.cotCode) {
+  //     toast.error("Please enter your COT Code");
+  //     return;
+  //   }
+
+  //   if (modalStep === 2 && !formData.taxCode) {
+  //     toast.error("Please enter your Tax Code");
+  //     return;
+  //   }
+
+  //   if (modalStep === 3 && !formData.matchingCode) {
+  //     toast.error("Please enter your Matching Code");
+  //     return;
+  //   }
+
+  //   if (modalStep < 3) {
+  //     setModalStep(modalStep + 1);
+  //     return;
+  //   }
+
+  //   setLoading(true);
+
+  //   try {
+  //     const token = localStorage.getItem("token");
+  //     const response = await axios.post(
+  //       "https://skyline-2kje.onrender.com/transfer",
+  //       {
+  //         recipientAccount: formData.beneficiaryNumber,
+  //         amount: formData.amount,
+  //         bank: formData.bankName,
+  //         accountName: formData.beneficiaryName,
+  //         description: formData.description,
+  //         cotCode: formData.cotCode,
+  //         taxCode: formData.taxCode,
+  //         matchingCode: formData.matchingCode
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //           "Content-Type": "application/json"
+  //         }
+  //       }
+  //     );
+  //     toast.success("Transfer successful!", {
+  //       position: "top-right",
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined
+  //     });
+  //     window.location.reload();
+  //     const outcome = response.data;
+  //     console.log(outcome);
+  //   } catch (error) {
+  //     toast.error(
+  //       error.response?.data?.message || "An error occurred. Please try again."
+  //     );
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <>
@@ -188,21 +295,6 @@ const TransferForm = () => {
               </>
             )}
             {modalStep === 1 && (
-              // <div className="modal">
-              //   <label htmlFor="cotCode">COT Code:</label>
-              //   <input
-              // id="cotCode"
-              // type="text"
-              // value={formData.cotCode}
-              // onChange={handleChange}
-              //   />
-              // <button
-              //   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              //   type="button" onClick={() => setModalStep(0)}>Back</button>
-              // <button
-              //   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              //   type="button" onClick={() => setModalStep(2)}>Submit</button>
-              // </div>
               <div className="">
                 <div className="mb-4 md:flex md:items-center">
                   <label
@@ -228,41 +320,25 @@ const TransferForm = () => {
                   >
                     Back
                   </button>
-                  <button
+                  {/* <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="button"
                     onClick={() => setModalStep(2)}
                   >
                     Submit
+                  </button> */}
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="button"
+                    onClick={() => handleStepChange(2)}
+                    disabled={countdown !== null}
+                  >
+                    {countdown !== null ? `Next (${countdown}s)` : "Next"}
                   </button>
                 </div>
               </div>
             )}
             {modalStep === 2 && (
-              // <div className="modal">
-              //   <label htmlFor="taxCode">Tax Code:</label>
-              //   <input
-              // id="taxCode"
-              // type="text"
-              // value={formData.taxCode}
-              // onChange={handleChange}
-              //   />
-              //   <button
-              //     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              //     type="button"
-              //     onClick={() => setModalStep(1)}
-              //   >
-              //     Back
-              //   </button>
-              //   <button
-              //     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              //     type="button"
-              //     onClick={() => setModalStep(3)}
-              //   >
-              //     Submit
-              //   </button>
-              // </div>
-
               <div className="">
                 <div className="mb-4 md:flex md:items-center">
                   <label
@@ -291,36 +367,15 @@ const TransferForm = () => {
                   <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="button"
-                    onClick={() => setModalStep(3)}
+                    onClick={() => handleStepChange(3)}
+                    disabled={countdown !== null}
                   >
-                    Submit
+                    {countdown !== null ? `Next (${countdown}s)` : "Next"}
                   </button>
                 </div>
               </div>
             )}
             {modalStep === 3 && (
-              // <div className="modal">
-              //   <label htmlFor="matchingCode">Matching Code:</label>
-              //   <input
-                  // id="matchingCode"
-                  // type="text"
-                  // value={formData.matchingCode}
-                  // onChange={handleChange}
-              //   />
-              //   <button
-              //     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              //     type="button"
-              //     onClick={() => setModalStep(2)}
-              //   >
-              //     Back
-              //   </button>
-              //   <button
-              //     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              //     type="submit"
-              //   >
-              //     Submit
-              //   </button>
-              // </div>
               <div className="">
                 <div className="mb-4 md:flex md:items-center">
                   <label
@@ -348,9 +403,10 @@ const TransferForm = () => {
                   </button>
                   <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                     type="submit"
+                    type="submit"
+                    disabled={loading}
                   >
-                    Submit
+                    {loading ? "Submitting..." : "Submit"}
                   </button>
                 </div>
               </div>
@@ -369,6 +425,46 @@ const TransferForm = () => {
           </form>
         </div>
       </div>
+      {showSuccessModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 w-80 text-center">
+            <div className="flex justify-center">
+              <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-10 h-10 text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </div>
+            </div>
+            <h2 className="text-xl font-semibold mt-4">Thank you</h2>
+            <p className="text-gray-600 mt-2">
+              You have successfully sent money to an eWallet.
+            </p>
+
+            <button
+              className="mt-4 w-full border border-black text-black py-2 rounded-lg"
+              onClick={handleViewDetails}
+            >
+              View details
+            </button>
+
+            <button
+              className="mt-2 w-full bg-black text-white py-2 rounded-lg"
+              onClick={() => setShowSuccessModal(false)}
+            >
+              Finish
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

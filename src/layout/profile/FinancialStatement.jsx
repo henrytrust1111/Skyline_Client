@@ -120,7 +120,7 @@ const FinancialStatement = () => {
                   <th className="p-3 text-sm font-semibold tracking-wide text-left">BANK</th>
                   <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">RECEIVER</th>
                   <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">AMOUNT</th>
-                  <th className="w-24 p-3 text-sm font-semibold tracking-wide text-left uppercase"></th>
+                  <th className="w-24 p-3 text-sm font-semibold tracking-wide text-left uppercase">TYPE</th>
                   <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">REMARK</th>
                   <th className="w-24 p-3 text-sm font-semibold tracking-wide text-left uppercase">Date/time</th>
                 </tr>
@@ -176,6 +176,85 @@ const FinancialStatement = () => {
 };
 
 export default FinancialStatement;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // import React, { useState, useEffect } from "react";
