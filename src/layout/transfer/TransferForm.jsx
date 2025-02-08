@@ -28,6 +28,17 @@ const TransferForm = () => {
   };
 
   const handleStepChange = (step) => {
+    // Form Validation
+    if (
+      modalStep === 0 &&
+      (!formData.amount ||
+        !formData.beneficiaryName ||
+        !formData.beneficiaryNumber ||
+        !formData.bankName)
+    ) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
     if (modalStep === 1 && !formData.cotCode) {
       toast.error("Please enter your COT Code");
       return;
@@ -413,12 +424,20 @@ const TransferForm = () => {
             )}
             {modalStep === 0 && (
               <div className="flex items-center justify-center">
-                <button
+                {/* <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="submit"
                   disabled={loading}
                 >
                   {loading ? "Submitting..." : "Submit"}
+                </button> */}
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  type="button"
+                  onClick={() => handleStepChange(1)}
+                  disabled={countdown !== null}
+                >
+                  {countdown !== null ? `Next (${countdown}s)` : "Next"}
                 </button>
               </div>
             )}
