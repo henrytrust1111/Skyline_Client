@@ -158,7 +158,7 @@ const AccountComponent = () => {
                                 <p>{data?.taxCode}</p>
                             </div>
                             <div className="log1">
-                                <h1>Tax Code:</h1>
+                                <h1>Matching Code:</h1>
                                 <p>{data?.matchingCode}</p>
                             </div>
                             {/* <div className="log1">
