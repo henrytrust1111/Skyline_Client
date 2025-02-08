@@ -127,7 +127,10 @@ const TransferForm = () => {
       );
       // toast.success("Transfer successful!", { autoClose: 5000 });
       setShowSuccessModal(true);
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+        setShowSuccessModal(false);
+      }, 5000);
     } catch (error) {
       toast.error(
         error.response?.data?.message || "An error occurred. Please try again."
