@@ -33,7 +33,7 @@ const Profile = () => {
                 <div>
                   <div className="-text--clr-silver">Available Balance</div>
                   <div className="text-3xl font-bold -text--clr-silver-v1">
-                    {`$ ${isNaN(userData1?.availableBalance) ? 0 : formatNumber(userData1?.availableBalance)}`}
+                    {`${userData1?.accountCurrency} ${isNaN(userData1?.availableBalance) ? 0 : formatNumber(userData1?.availableBalance)}`}
                   </div>
                 </div>
                 <div className="-text--clr-white font-bold ml-1 bg-blue-800 py-1 px-2 rounded ">
@@ -77,7 +77,7 @@ const Profile = () => {
               <div className="-bg--clr-primary p-6 rounded shadow-md space-y-2">
                 <div className="-text--clr-silver">Total Book Balance</div>
                 <div className="text-3xl font-bold -text--clr-silver-v1">
-                  {`$ ${isNaN(userData1?.totalBalance) ? 0 : formatNumber(userData1?.totalBalance)}`}
+                  {`${userData1?.accountCurrency}  ${isNaN(userData1?.totalBalance) ? 0 : formatNumber(userData1?.totalBalance)}`}
                 </div>
                 {/* <div className="-text--clr-silver-v1">as at July 4, 2024</div> */}
 

@@ -83,7 +83,7 @@ const EditProfileModal = ({ onClose }) => {
       if (error.response && error.response.status === 404) {
         toast.error('User not found');
       } else {
-        toast.error(`Internal Server Error: ${error.message}`);
+        console.log(`Internal Server Error: ${error.message}`);
       }
     } finally {
       setLoading(false);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaEnvelope, FaDollarSign } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 import ContentTop from "../../components/ContentTop/ContentTop";
 import EditProfileModal from "../../components/ContentTop/modals/EditProfileModal";
 
@@ -25,8 +25,8 @@ const CustomerDetail = () => {
         `https://skyline-2kje.onrender.com/view-me/${userId}`,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}`
+          }
         }
       );
       setUserData(response.data.user);
@@ -34,7 +34,7 @@ const CustomerDetail = () => {
       // toast.success("User data fetched successfully!");
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        toast.error("User not found");
+        console.log("User not found");
       } else {
         toast.error("Internal Server Error: " + error.message);
       }
@@ -108,13 +108,16 @@ const CustomerDetail = () => {
     availableBalance,
     accountStatus,
     accountType,
+    accountCurrency
   } = userData;
+
+  console.log(userData);
 
   return (
     <>
       <div className="main-content">
         <ContentTop />
-        <div className="flex flex-col md:flex-row -bg--clr-secondary p-4 rounded-lg shadow-md md:space-x-2">
+        <div className="flex flex-col sm:!flex-row gap-4 -bg--clr-secondary p-4 rounded-lg shadow-md md:space-x-2">
           {/* Left Side */}
           <div className="flex-1 -bg--clr-primary p-4 rounded-lg shadow-sm mb-4 md:mb-0">
             <div className="text-2xl font-bold -text--clr-silver underline underline-offset-8 mb-2">
@@ -131,21 +134,27 @@ const CustomerDetail = () => {
             </div>
             <div className="mt-4">
               <div className="text-sm font-medium flex items-center -text--clr-silver-v1">
-                <FaDollarSign className="h-5 w-5 -text--clr-silver-v1 mr-2" />{" "}
+                <span className="text-2xl -text--clr-silver-v1 mr-2">
+                  {accountCurrency}
+                </span>
                 Total Balance:
               </div>
               <div className="text-sm -text--clr-silver">
-                {`$ ${isNaN(totalBalance) ? 0 : formatNumber(totalBalance)}`}
+                {`${accountCurrency} ${
+                  isNaN(totalBalance) ? 0 : formatNumber(totalBalance)
+                }`}
               </div>
               <div className="w-full bg-blue-500 h-1 mt-2 rounded"></div>
             </div>
             <div className="mt-4">
               <div className="text-sm font-medium flex items-center -text--clr-silver-v1">
-                <FaDollarSign className="h-5 w-5 -text--clr-silver-v1 mr-2" />{" "}
+                <span className="text-2xl -text--clr-silver-v1 mr-2">
+                  {accountCurrency}
+                </span>{" "}
                 Available Balance:
               </div>
               <div className="text-sm -text--clr-silver">
-                {`$ ${
+                {`${accountCurrency} ${
                   isNaN(availableBalance) ? 0 : formatNumber(availableBalance)
                 }`}
               </div>
@@ -153,7 +162,9 @@ const CustomerDetail = () => {
             </div>
             <div className="mt-4">
               <div className="text-sm font-medium flex items-center -text--clr-silver-v1">
-                <FaDollarSign className="h-5 w-5 -text--clr-silver-v1 mr-2" />{" "}
+                <span className="text-2xl -text--clr-silver-v1 mr-2">
+                  {accountCurrency}
+                </span>{" "}
                 Account Status:
               </div>
               <div className="text-sm -text--clr-silver">{accountStatus}</div>
@@ -161,7 +172,9 @@ const CustomerDetail = () => {
             </div>
             <div className="mt-4">
               <div className="text-sm font-medium flex items-center -text--clr-silver-v1">
-                <FaDollarSign className="h-5 w-5 -text--clr-silver-v1 mr-2" />{" "}
+                <span className="text-2xl -text--clr-silver-v1 mr-2">
+                  {accountCurrency}
+                </span>{" "}
                 Account Type:
               </div>
               <div className="text-sm -text--clr-silver">{accountType}</div>

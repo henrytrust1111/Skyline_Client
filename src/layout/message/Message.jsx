@@ -56,7 +56,7 @@ const MessageComponent = () => {
       // toast.success("User data fetched successfully!");
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        toast.error("User not found");
+        console.log("User not found");
       } else {
         toast.error("Internal Server Error: " + error.message);
       }

@@ -35,7 +35,7 @@ const FinancialStatement = () => {
       // console.log(response.data.transactions);
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        toast.error("User not found");
+        console.log("User not found");
         // console.log(error)
       } else {
         toast.error("Internal Server Error: " + error.message);
@@ -99,6 +99,10 @@ const FinancialStatement = () => {
     return `${day}/${month}/${year} ${hours}:${minutes}${ampm}`;
   };
 
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat("en-US").format(number);
+  };
+
   return (
     <>
       {/* Financial Statement Review */}
@@ -158,7 +162,7 @@ const FinancialStatement = () => {
                       {data.accountName}
                     </td>
                     <td className="p-3 text-sm -text--clr-silver-v1 whitespace-nowrap">
-                      {data.amountTransferred}
+                     ${formatNumber(data.amountTransferred)}
                     </td>
                     <td className="p-3 text-sm -text--clr-silver-v1 whitespace-nowrap">
                       <span
@@ -282,7 +286,7 @@ export default FinancialStatement;
 //       setFinancialStatement(response.data.statement);
 //     } catch (error) {
 //       if (error.response && error.response.status === 404) {
-//         // toast.error("User not found");
+//         // console.log("User not found");
 //       } else {
 //         // toast.error("Internal Server Error: " + error.message);
 //       }

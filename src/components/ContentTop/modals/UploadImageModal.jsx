@@ -54,7 +54,7 @@ const UploadImageModal = ({ onClose }) => {
       } else if (error.response && error.response.status === 404) {
         toast.error('User not found');
       } else {
-        toast.error(`Internal server error: ${error.message}`);
+        console.log(`Internal server error: ${error.message}`);
       }
     } finally {
       setLoading(false);

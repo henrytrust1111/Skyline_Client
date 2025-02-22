@@ -27,6 +27,7 @@ export const AddAccount = () => {
   const [cotCode, setCotCode] = useState("");
   const [taxCode, setTaxCode] = useState("");
   const [matchingCode, setMatchingCode] = useState("");
+  const [accountCurrency, setAccountCurrency] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({
     // isError: false,
@@ -57,7 +58,8 @@ export const AddAccount = () => {
     accountLimit: limit,
     cotCode: cotCode,
     taxCode: taxCode,
-    matchingCode
+    matchingCode,
+    accountCurrency
   };
 
   const passwordValidator = () => {
@@ -330,6 +332,15 @@ export const AddAccount = () => {
                 value={matchingCode}
                 onChange={(e) => setMatchingCode(e.target.value)}
                 type="number"
+              />
+            </div>
+            <div className="inputHold">
+              <p>Account Currency</p>
+              <input
+                required
+                value={accountCurrency}
+                onChange={(e) => setAccountCurrency(e.target.value)}
+                type="text"
               />
             </div>
           </div>
@@ -736,6 +747,7 @@ export const UpdateAccount = () => {
   const [cotCode, setCotCode] = useState("");
   const [taxCode, setTaxCoded] = useState("");
   const [accountLimit, setAccountLimit] = useState();
+  const [accountCurrency, setAccountCurrency] = useState();
   const [loading2, setLoading2] = useState(false);
   const [placeholder, setPlaceholder] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
@@ -774,7 +786,8 @@ export const UpdateAccount = () => {
     cotCode: cotCode,
     taxCode: taxCode,
     accountLimit: limit,
-    matchingCode
+    matchingCode,
+    accountCurrency
   };
   const admin = JSON.parse(localStorage.getItem("adminData"));
   const token = admin.token;
@@ -1101,9 +1114,9 @@ export const UpdateAccount = () => {
                 <div className="inputHold">
                   <p>Account currency</p>
                   <input
-                    value={currency}
+                    value={accountCurrency}
                     placeholder={placeholder.accountCurrency}
-                    onChange={(e) => setCurrency(e.target.value)}
+                    onChange={(e) => setAccountCurrency(e.target.value)}
                     type="text"
                   />
                 </div>

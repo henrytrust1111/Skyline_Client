@@ -10,6 +10,10 @@ const CreditDebit = () => {
   const token = localStorage.getItem("token");
   const userId = data?._id;
 
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat("en-US").format(number);
+  };
+
   useEffect(() => {
     if (userId) {
       fetchUserData();
@@ -23,14 +27,14 @@ const CreditDebit = () => {
         `https://skyline-2kje.onrender.com/bank-statement/${userId}`,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}`
+          }
         }
       );
       setStatement(response.data.statement);
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        toast.error("User not found");
+        console.log("User not found");
       } else {
         toast.error("Internal Server Error: " + error.message);
       }
@@ -89,10 +93,18 @@ const CreditDebit = () => {
           <table className="w-full">
             <thead className="border-b-2 -border--clr-silver-v1">
               <tr className="-text--clr-silver-v1">
-                <th className="w-20 p-3 text-sm font-semibold tracking-wide text-left">DATE</th>
-                <th className="p-3 text-sm font-semibold tracking-wide text-left">TYPE</th>
-                <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">AMOUNT</th>
-                <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">RECIPIENT ACCOUNT</th>
+                <th className="w-20 p-3 text-sm font-semibold tracking-wide text-left">
+                  DATE
+                </th>
+                <th className="p-3 text-sm font-semibold tracking-wide text-left">
+                  TYPE
+                </th>
+                <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">
+                  AMOUNT
+                </th>
+                <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">
+                  RECIPIENT ACCOUNT
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y -divide--clr-silver-v1">
@@ -101,9 +113,15 @@ const CreditDebit = () => {
                   <td className="p-3 text-sm whitespace-nowrap">
                     {new Date(transaction.date).toLocaleString()}
                   </td>
-                  <td className="p-3 text-sm whitespace-nowrap">{transaction.type}</td>
-                  <td className="p-3 text-sm whitespace-nowrap">{transaction.amount}</td>
-                  <td className="p-3 text-sm whitespace-nowrap">{transaction.recipientAccount}</td>
+                  <td className="p-3 text-sm whitespace-nowrap">
+                    {transaction.type}
+                  </td>
+                  <td className="p-3 text-sm whitespace-nowrap">
+                    ${formatNumber(transaction.amount)}
+                  </td>
+                  <td className="p-3 text-sm whitespace-nowrap">
+                    {transaction.recipientAccount}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -112,15 +130,17 @@ const CreditDebit = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
           {transactions.map((transaction, index) => (
-            <div key={index} className="-bg--clr-secondary space-y-3 p-4 rounded-lg shadow">
+            <div
+              key={index}
+              className="-bg--clr-secondary space-y-3 p-4 rounded-lg shadow"
+            >
               <div className="flex items-center space-x-2 text-sm">
-                <div>
-                  {new Date(transaction.date).toLocaleString()}
-                </div>
+                <div>{new Date(transaction.date).toLocaleString()}</div>
                 <div className="text-gray-500">{transaction.type}</div>
               </div>
               <div className="text-sm -text--clr-silver-v1">
-                {transaction.recipientAccount} <br /> {transaction.amount}
+                {transaction.recipientAccount} <br />{" "}
+                ${formatNumber(transaction.amount)}
               </div>
             </div>
           ))}
@@ -131,14 +151,6 @@ const CreditDebit = () => {
 };
 
 export default CreditDebit;
-
-
-
-
-
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
@@ -172,7 +184,7 @@ export default CreditDebit;
 //       setRecord(response.data.user);
 //     } catch (error) {
 //       if (error.response && error.response.status === 404) {
-//         toast.error("User not found");
+//         console.log("User not found");
 //       } else {
 //         toast.error("Internal Server Error: " + error.message);
 //       }

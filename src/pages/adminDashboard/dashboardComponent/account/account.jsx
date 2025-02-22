@@ -127,7 +127,7 @@ const AccountComponent = () => {
                             </div>
                             <div className="log1">
                                 <h1>Currency:</h1>
-                                <p>$</p>
+                                <p>{data?.accountCurrency}</p>
                             </div>
                         </div>
                         <div className="acountLog">

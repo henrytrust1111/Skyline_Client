@@ -46,14 +46,14 @@ const Transfer = () => {
                 <div className="-text--clr-silver-v1">Book Balance</div>
                 <div className="text-2xl text-orange-500 font-bold">
                   {/* $1,200,000.00 */}           
-                  {`$ ${isNaN(userData?.totalBalance) ? 0 : formatNumber(userData?.totalBalance)}`}
+                  {`${userData?.accountCurrency} ${isNaN(userData?.totalBalance) ? 0 : formatNumber(userData?.totalBalance)}`}
                   </div>
               </div>
               <div className="p-4 -bg--clr-primary rounded shadow-md text-center max-[700px]:w-[95%]">
                 <div className="-text--clr-silver-v1">Available Balance</div>
                 <div className="text-2xl text-green-500 font-bold">
                   {/* $900,000.00 */}
-                  {`$ ${isNaN(userData?.availableBalance) ? 0 : formatNumber(userData?.availableBalance)}`}
+                  {`${userData?.accountCurrency} ${isNaN(userData?.availableBalance) ? 0 : formatNumber(userData?.availableBalance)}`}
                   </div>
               </div>
             </div>
