@@ -37,10 +37,6 @@ const FinancialStatement = () => {
       if (error.response && error.response.status === 404) {
         console.log("User not found");
         // console.log(error)
-      } else {
-        toast.error("Internal Server Error: " + error.message);
-        console.log("Internal Server Error: " + error.message);
-        // console.log(error)
       }
     } finally {
       setLoading(false);

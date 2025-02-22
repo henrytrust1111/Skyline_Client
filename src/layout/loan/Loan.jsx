@@ -9,7 +9,7 @@ const Loan = () => {
   const userData = JSON.parse(localStorage.getItem("balance"));
 
   const formatNumber = (number) => {
-    return new Intl.NumberFormat('en-US').format(number);
+    return new Intl.NumberFormat("en-US").format(number);
   };
 
   useEffect(() => {
@@ -44,13 +44,21 @@ const Loan = () => {
               <div className="p-4 -bg--clr-primary rounded shadow-md text-center max-[700px]:w-[95%] ">
                 <div className="-text--clr-silver-v1">Book Balance</div>
                 <div className="text-2xl text-orange-500 font-bold">
-                  {`$ ${isNaN(userData?.totalBalance) ? 0 : formatNumber(userData?.totalBalance)}`}
+                  {`${userData?.accountCurrency} ${
+                    isNaN(userData?.totalBalance)
+                      ? 0
+                      : formatNumber(userData?.totalBalance)
+                  }`}
                 </div>
               </div>
               <div className="p-4 -bg--clr-primary rounded shadow-md text-center max-[700px]:w-[95%]">
                 <div className="-text--clr-silver-v1">Available Balance</div>
                 <div className="text-2xl text-green-500 font-bold">
-                  {`$ ${isNaN(userData?.availableBalance) ? 0 : formatNumber(userData?.availableBalance)}`}
+                  {`${userData?.accountCurrency} ${
+                    isNaN(userData?.availableBalance)
+                      ? 0
+                      : formatNumber(userData?.availableBalance)
+                  }`}
                 </div>
               </div>
             </div>
@@ -68,34 +76,6 @@ const Loan = () => {
               </div>
             </div>
             <AtmCardDetail />
-            {/* <div className="-bg--clr-primary p-4 rounded shadow-md">
-              <div className="-text--clr-silver-v1">ATM Card Details</div>
-              <div className="mt-4 space-y-2">
-                <div className="p-2 border rounded -text--clr-silver-v1">
-                  Card Number: 4257 9801 21190 XXXX
-                </div>
-                <div className="flex space-x-2">
-                  <div className="flex-1">
-                    <div className="-text--clr-silver-v1">Ex.Date</div>
-                    <div className="p-2 border rounded -text--clr-silver-v1">
-                      06/2
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="-text--clr-silver-v1">Csv</div>
-                    <div className="p-2 border rounded -text--clr-silver-v1">
-                      268
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="-text--clr-silver-v1">Pin</div>
-                    <div className="p-2 border rounded -text--clr-silver-v1">
-                      5460
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
             <div className="-bg--clr-primary p-4 rounded shadow-md">
               <div className="text-blue-800 font-bold">TIPS</div>
               <div className="mt-4 -text--clr-silver-v1">
